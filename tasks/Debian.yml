@@ -1,0 +1,3 @@
+---
+- name: install package
+  apt: name=corkscrew state=latest
