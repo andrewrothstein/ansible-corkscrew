@@ -1,3 +1,4 @@
 ---
 # defaults file for corkscrew
 corkscrew_version : '2.0'
+corkscrew_mirror: 'http://agroman.net/corkscrew'

@@ -1,3 +1,5 @@
 ---
 - name: install package
+  become: yes
+  become_user: root
   package: name=corkscrew state=present

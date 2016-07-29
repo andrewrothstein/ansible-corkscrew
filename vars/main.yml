@@ -1,4 +1,4 @@
 ---
 # vars file for corkscrew
 corkscrew_tgz : 'corkscrew-{{corkscrew_version}}.tar.gz'
-corkscrew_url : 'http://agroman.net/corkscrew/{{corkscrew_tgz}}'
+corkscrew_url : '{{corkscrew_mirror}}/{{corkscrew_tgz}}'

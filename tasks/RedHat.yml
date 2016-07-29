@@ -1,11 +1,15 @@
 ---
 - name: download tgz
+  become: yes
+  become_user: root
   get_url: >
     url={{corkscrew_url}}
     dest=/tmp/{{corkscrew_tgz}}
-    mode=644
+    mode=0644
 
 - name: unarchive
+  become: yes
+  become_user: root
   unarchive: >
     copy=no
     src=/tmp/{{corkscrew_tgz}}
@@ -13,12 +17,16 @@
     creates=/opt/corkscrew-{{corkscrew_version}}
 
 - name: configure it
+  become: yes
+  become_user: root
   command: ./configure
   args:
     chdir: '/opt/corkscrew-{{corkscrew_version}}'
     creates: '/opt/corkscrew-{{corkscrew_version}}/Makefile'
 
 - name: build it
+  become: yes
+  become_user: root
   command: make install
   args:
     chdir: '/opt/corkscrew-{{corkscrew_version}}'
