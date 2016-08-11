@@ -1,5 +1,5 @@
 ---
-corkscrew_name: 'corkscrew-{{corkscrew_version}}'
+corkscrew_name: 'corkscrew-{{corkscrew_build_version}}'
 corkscrew_tgz : '{{corkscrew_name}}.tar.gz'
-corkscrew_url : '{{corkscrew_mirror}}/{{corkscrew_tgz}}'
+corkscrew_url : '{{corkscrew_build_mirror}}/{{corkscrew_tgz}}'
 corkscrew_build_dir: '/tmp/{{corkscrew_name}}'

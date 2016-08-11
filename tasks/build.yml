@@ -23,3 +23,11 @@
   args:
     chdir: '{{corkscrew_build_dir}}'
     creates: /usr/local/bin/corkscrew
+
+- name: clean up
+  with_items:
+    - '{{corkscrew_build_dir}}'
+    - '/tmp/{{corkscrew_tgz}}'
+  file: >-
+    path={{item}}
+    state=absent
