@@ -1,0 +1,25 @@
+---
+- name: download tgz
+  get_url: >
+    url={{corkscrew_url}}
+    dest=/tmp/{{corkscrew_tgz}}
+    mode=0644
+
+- name: unarchive
+  unarchive: >
+    copy=no
+    src=/tmp/{{corkscrew_tgz}}
+    dest=/tmp
+    creates={{corkscrew_build_dir}}
+
+- name: configure it
+  command: ./configure
+  args:
+    chdir: '{{corkscrew_build_dir}}'
+    creates: '{{corkscrew_build_dir}}/Makefile'
+
+- name: build it
+  command: make install
+  args:
+    chdir: '{{corkscrew_build_dir}}'
+    creates: /usr/local/bin/corkscrew

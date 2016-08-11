@@ -1,4 +1,5 @@
 ---
-# vars file for corkscrew
-corkscrew_tgz : 'corkscrew-{{corkscrew_version}}.tar.gz'
+corkscrew_name: 'corkscrew-{{corkscrew_version}}'
+corkscrew_tgz : '{{corkscrew_name}}.tar.gz'
 corkscrew_url : '{{corkscrew_mirror}}/{{corkscrew_tgz}}'
+corkscrew_build_dir: '/tmp/{{corkscrew_name}}'
