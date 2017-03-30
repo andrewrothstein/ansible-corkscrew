@@ -13,6 +13,8 @@ galaxy_info:
     - name: Fedora
       versions:
         - 23
+        - 24
+        - 25
     - name: Ubuntu
       versions:
         - trusty
@@ -23,5 +25,8 @@ galaxy_info:
 
 dependencies:
   - role: andrewrothstein.unarchive-deps
-    version: v1.0.3
+    version: v1.0.6
+  - role: andrewrothstein.ca-certs
+    version: v1.0.0
+
   
