@@ -1,4 +1,7 @@
 ---
-corkscrew_os_pkgs: []
+corkscrew_os_pkgs:
+  - gcc
+  - make
+  - automake
 corkscrew_build: True
   
