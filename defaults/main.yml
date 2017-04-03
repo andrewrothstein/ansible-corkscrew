@@ -2,4 +2,4 @@
 corkscrew_build: False
 corkscrew_os_pkgs: []
 corkscrew_build_version : '2.0'
-corkscrew_build_mirror: 'http://agroman.net/corkscrew'
+corkscrew_build_mirror: https://github.com/andrewrothstein/corkscrew/archive

@@ -1,16 +1,16 @@
 ---
 - name: download tgz
-  get_url: >
-    url={{corkscrew_url}}
-    dest=/tmp/{{corkscrew_tgz}}
-    mode=0644
+  get_url:
+    url: '{{corkscrew_url}}'
+    dest: /tmp/{{corkscrew_tgz}}
+    mode: 0644
 
 - name: unarchive
-  unarchive: >
-    copy=no
-    src=/tmp/{{corkscrew_tgz}}
-    dest=/tmp
-    creates={{corkscrew_build_dir}}
+  unarchive:
+    copy: no
+    src: /tmp/{{corkscrew_tgz}}
+    dest: /tmp
+    creates: '{{corkscrew_build_dir}}'
 
 - name: configure it
   command: ./configure
@@ -28,6 +28,6 @@
   with_items:
     - '{{corkscrew_build_dir}}'
     - '/tmp/{{corkscrew_tgz}}'
-  file: >-
-    path={{item}}
-    state=absent
+  file:
+    path: '{{item}}'
+    state: absent

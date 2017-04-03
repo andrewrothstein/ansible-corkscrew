@@ -2,7 +2,7 @@
 andrewrothstein.corkscrew
 ===========================
 
-Installs [corkscrew](http://corkscrew.org/)
+Installs or builds [corkscrew](https://github.com/andrewrothstein/corkscrew) from sources.
 
 Requirements
 ------------

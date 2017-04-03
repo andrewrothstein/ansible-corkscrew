@@ -10,11 +10,14 @@
   become: yes
   become_user: root
   with_items: '{{corkscrew_os_pkgs}}'
-  package: name={{item}} state=present
+  package:
+    name: '{{item}}'
+    state: present
 
 - name: check for corkscrew binary
-  stat: path=/usr/local/bin/corkscrew
   when: corkscrew_build
+  stat:
+    path: /usr/local/bin/corkscrew
   register: corkscrew_present
 
 - name: perform build
