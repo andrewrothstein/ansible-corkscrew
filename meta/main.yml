@@ -26,7 +26,5 @@ galaxy_info:
 dependencies:
   - role: andrewrothstein.unarchive-deps
     version: v1.0.6
-  - role: andrewrothstein.ca-certs
-    version: v1.0.0
 
   
