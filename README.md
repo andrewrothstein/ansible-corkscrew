@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/andrewrothstein/ansible-corkscrew.svg?style=svg)](https://circleci.com/gh/andrewrothstein/ansible-corkscrew)
 andrewrothstein.corkscrew
 ===========================
+[![Build Status](https://travis-ci.org/andrewrothstein/ansible-corkscrew.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-corkscrew)
 
 Installs or builds [corkscrew](https://github.com/andrewrothstein/corkscrew) from sources.
 
