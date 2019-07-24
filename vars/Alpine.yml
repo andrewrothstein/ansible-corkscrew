@@ -1,0 +1,9 @@
+---
+corkscrew_os_pkgs:
+  - gcc
+  - make
+  - autoconf
+  - automake
+  - libc-dev
+corkscrew_build: True
+  

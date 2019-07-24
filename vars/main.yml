@@ -1,6 +1,8 @@
 ---
-corkscrew_name: 'corkscrew-{{corkscrew_build_version}}'
-corkscrew_upstream_tgz: v{{corkscrew_build_version}}.tar.gz
-corkscrew_tgz : '{{corkscrew_name}}.tar.gz'
-corkscrew_url : '{{corkscrew_build_mirror}}/{{corkscrew_upstream_tgz}}'
-corkscrew_build_dir: /tmp/{{corkscrew_name}}
+corkscrew_name: corkscrew-{{ corkscrew_build_version }}
+corkscrew_upstream_tgz: v{{ corkscrew_build_version }}.tar.gz
+corkscrew_tgz : '{{ corkscrew_name }}.tar.gz'
+corkscrew_url : '{{ corkscrew_build_mirror }}/{{ corkscrew_upstream_tgz }}'
+corkscrew_build_src_dir: '{{ corkscrew_build_parent_src_dir }}/{{ corkscrew_name }}'
+corkscrew_build_checksum: '{{ corkscrew_build_checksums[corkscrew_build_version] }}'
+corkscrew_build_install_exe: /usr/local/bin/corkscrew

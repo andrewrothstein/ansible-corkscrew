@@ -3,29 +3,58 @@
   include_vars: '{{item}}'
   with_first_found:
     - files:
-        - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
-        - '{{ansible_distribution}}.yml'
-        - '{{ansible_os_family}}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
       skip: true
       paths:
-        - '{{role_path}}/vars'
+        - '{{ role_path }}/vars'
 
 - name: install os pkgs
   become: yes
   become_user: root
-  with_items: '{{corkscrew_os_pkgs}}'
+  with_items: '{{ corkscrew_os_pkgs | default([]) }}'
   package:
-    name: '{{item}}'
+    name: '{{ item }}'
     state: present
 
 - name: check for corkscrew binary
   when: corkscrew_build
   stat:
-    path: /usr/local/bin/corkscrew
+    path: '{{ corkscrew_build_install_exe }}'
   register: corkscrew_present
 
 - name: perform build
-  when: corkscrew_build and corkscrew_present.stat.exists == False
+  when: corkscrew_build and not corkscrew_present.stat.exists
   become: yes
   become_user: root
-  include_tasks: build.yml
+  block:
+    - name: download tgz
+      get_url:
+        url: '{{ corkscrew_url }}'
+        dest: /tmp/{{ corkscrew_tgz }}
+        mode: 0644
+    - name: unarchive
+      unarchive:
+        remote_src: yes
+        src: /tmp/{{ corkscrew_tgz }}
+        dest: '{{ corkscrew_build_parent_src_dir }}'
+        creates: '{{ corkscrew_build_src_dir }}'
+    - name: configure it
+      command: ./configure
+      args:
+        chdir: '{{ corkscrew_build_src_dir }}'
+        creates: '{{ corkscrew_build_src_dir }}/Makefile'
+    - name: build it
+      command: make install
+      args:
+        chdir: '{{ corkscrew_build_src_dir }}'
+        creates: '{{ corkscrew_build_install_exe }}'
+  always:
+    - name: clean up
+      with_items:
+        - '{{ corkscrew_build_src_dir }}'
+        - /tmp/{{ corkscrew_tgz }}
+      file:
+        path: '{{ item }}'
+        state: absent
