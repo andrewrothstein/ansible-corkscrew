@@ -1,9 +1,7 @@
 ---
 corkscrew_build: False
-corkscrew_build_version : '2.0'
+corkscrew_build_version: '2.0'
 corkscrew_build_mirror: https://github.com/andrewrothstein/corkscrew/archive
 corkscrew_build_parent_src_dir: /tmp
-
 corkscrew_build_checksums:
   '2.0': sha256:879344d6ba456635525c05982e1590bd5344224c15c413180d371f5e65d43343
-
